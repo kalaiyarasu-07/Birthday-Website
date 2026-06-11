@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday, Soumiya ✨</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600;700&family=Dancing+Script:wght@400;600;700&family=Jost:wght@200;300;400&display=swap" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/TextPlugin.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+
+  <!-- CINEMATIC INTRO -->
+  <div id="cinematic-intro">
+    <canvas id="intro-canvas"></canvas>
+    <div id="intro-content">
+      <p class="intro-text" data-text-id="1"></p>
+      <h1 class="intro-name"></h1>
+      <p class="intro-text" data-text-id="2"></p>
+      <div class="intro-countdown"></div>
+    </div>
+    <button id="skip-intro-btn">Skip</button>
+    <div id="intro-flash"></div>
+  </div>
+
+  <!-- SCROLL PROGRESS -->
+  <div id="scroll-progress"><div id="scroll-bar"></div></div>
+
+  <!-- CURSOR -->
+  <div id="cursor"></div>
+  <div id="cursor-trail"></div>
+
+  <!-- MUSIC TOGGLE -->
+  <button id="music-btn" title="Toggle Music">
+    <span id="music-icon">♪</span>
+  </button>
+  <audio id="bg-music" loop>
+<source src="Until_I_Found_You.mp3" type="audio/mpeg" />
+  </audio>
+
+  <!-- SECTION 1: HERO -->
+  <section id="hero">
+    <canvas id="hero-canvas"></canvas>
+    <div class="hero-content">
+      <div class="hero-date">13 · June · 2026</div>
+      <h1 class="hero-title">
+        <span class="happy">Happy Birthday</span>
+        <span class="name-display">Soumiya</span>
+      </h1>
+      <div class="countdown-wrap" id="countdown-wrap">
+        <div class="countdown-today">Today is your day ✨</div>
+      </div>
+      <p class="hero-sub">A day as beautiful as you deserves a world of its own.</p>
+      <button class="begin-btn" id="begin-btn">
+        <span>Begin the Journey</span>
+        <div class="btn-glow"></div>
+      </button>
+    </div>
+    <div class="floating-hearts" id="floating-hearts"></div>
+  </section>
+
+  <!-- SECTION 2: GALLERY -->
+  <section id="gallery-section">
+    <div class="section-header">
+      <p class="section-tagline">Beautiful Memories</p>
+      <h2 class="section-title">Every picture tells a story,<br/><em>and every story becomes beautiful because of you.</em></h2>
+    </div>
+    <div class="gallery-grid" id="gallery-grid">
+      <div class="gallery-item" data-index="0"><div class="gallery-img-wrap"><img src="Memory 3.jpeg" alt="Memory 1.jpeg" onerror="this.parentElement.classList.add('placeholder')"/><div class="gallery-overlay"><div class="gallery-sparkles"></div></div></div></div>
+      <div class="gallery-item tall" data-index="1"><div class="gallery-img-wrap"><img src="Memory 2.png" alt="Memory 2" onerror="this.parentElement.classList.add('placeholder')"/><div class="gallery-overlay"><div class="gallery-sparkles"></div></div></div></div>
+      <div class="gallery-item" data-index="2"><div class="gallery-img-wrap"><img src="Memory 1.jpeg" alt="Memory 3" onerror="this.parentElement.classList.add('placeholder')"/><div class="gallery-overlay"><div class="gallery-sparkles"></div></div></div></div>
+      <div class="gallery-item wide" data-index="3"><div class="gallery-img-wrap"><img src="Memory 4.png" alt="Memory 4" onerror="this.parentElement.classList.add('placeholder')"/><div class="gallery-overlay"><div class="gallery-sparkles"></div></div></div></div>
+      <div class="gallery-item" data-index="4"><div class="gallery-img-wrap"><img src="Memory 5.jpeg" alt="Memory 5" onerror="this.parentElement.classList.add('placeholder')"/><div class="gallery-overlay"><div class="gallery-sparkles"></div></div></div></div>
+      <div class="gallery-item tall" data-index="5"><div class="gallery-img-wrap"><img src="Memory 6.png" alt="Memory 6" onerror="this.parentElement.classList.add('placeholder')"/><div class="gallery-overlay"><div class="gallery-sparkles"></div></div></div></div>
+      <div class="gallery-item" data-index="6"><div class="gallery-img-wrap"><img src="Memory 7.jpeg" alt="Memory 7" onerror="this.parentElement.classList.add('placeholder')"/><div class="gallery-overlay"><div class="gallery-sparkles"></div></div></div></div>
+      <div class="gallery-item wide" data-index="7"><div class="gallery-img-wrap"><img src="Memory 8.jpeg" alt="Memory 8" onerror="this.parentElement.classList.add('placeholder')"/><div class="gallery-overlay"><div class="gallery-sparkles"></div></div></div></div>
+    </div>
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+      <button class="lightbox-close" id="lightbox-close">×</button>
+      <img id="lightbox-img" src="" alt=""/>
+    </div>
+  </section>
+
+  <!-- SECTION 3: ACHIEVEMENTS -->
+  <section id="achievement-section">
+    <div class="section-header">
+      <p class="section-tagline">Future Group 2 Officer</p>
+      <h2 class="section-title">Dreams Under<br/><em>Construction</em></h2>
+    </div>
+    <p class="achievement-desc">Every page you study today becomes a step towards your future success.</p>
+    <div class="achievement-center">
+      <div class="orbit-system" id="orbit-system">
+        <div class="achievement-poster">
+          <img src="achievement.jpg.jpeg" alt="Achievement" onerror="this.parentElement.classList.add('placeholder-poster')"/>
+          <div class="poster-glow"></div>
+        </div>
+        <div class="orbit-ring" id="orbit-ring">
+          <div class="orbit-book" style="--i:0"><img src="book1.png" alt="Book 1" onerror="this.src='';this.parentElement.classList.add('book-placeholder')"/></div>
+          <div class="orbit-book" style="--i:1"><img src="book2.png" alt="Book 2" onerror="this.src='';this.parentElement.classList.add('book-placeholder')"/></div>
+          <div class="orbit-book" style="--i:2"><img src="book3.png" alt="Book 3" onerror="this.src='';this.parentElement.classList.add('book-placeholder')"/></div>
+          <div class="orbit-book" style="--i:3"><img src="book4.png" alt="Book 4" onerror="this.src='';this.parentElement.classList.add('book-placeholder')"/></div>
+          <div class="orbit-book" style="--i:4"><img src="book5.png" alt="Book 5" onerror="this.src='';this.parentElement.classList.add('book-placeholder')"/></div>
+          <div class="orbit-book" style="--i:5"><img src="book6.png" alt="Book 6" onerror="this.src='';this.parentElement.classList.add('book-placeholder')"/></div>
+        </div>
+      </div>
+    </div>
+    <p class="achievement-footer">"Your consistency today is building the officer you will become tomorrow."</p>
+  </section>
+
+  <!-- SECTION 4: LETTER -->
+  <section id="letter-section">
+    <div class="rose-petals" id="rose-petals"></div>
+    <div class="envelope-wrap" id="envelope-wrap">
+      <div class="envelope" id="envelope">
+        <div class="envelope-body">
+          <div class="envelope-flap" id="envelope-flap"></div>
+          <div class="envelope-front">
+            <span class="envelope-seal">❤</span>
+            <p class="envelope-label">For Soumiya</p>
+          </div>
+        </div>
+      </div>
+      <p class="envelope-hint" id="envelope-hint">Click to open ↓</p>
+    </div>
+    <div class="letter-content" id="letter-content">
+      <div class="letter-paper">
+        <p class="letter-salutation">Dear Soumiya,</p>
+        <p class="letter-body">
+        On your special day, I just want to tell you how much you mean to me💕 . You are one of the sweetest and most hardworking people I know. Your smile can make any day better, and your kind heart is what makes you truly beautiful.
+        <p class="letter-body">
+          I really admire how much effort you put into your dreams. Even when things are difficult, you never give up. You keep moving forward, and that is something I love and respect about you.
+        </p>
+        <p class="letter-body">
+         I hope this year brings you happiness, success, good health, and everything your heart wishes for. You deserve all the good things in life because of the wonderful person you are.
+
+Keep smiling, keep believing in yourself, and keep shining. No matter where life takes you, I will always be happy to see you grow and achieve your dreams.
+
+
+
+Happy Birthday, Soumiya. 🎂✨
+        </p>
+        <p class="letter-closing">With lots of love and warm wishes,<br/><em>Someone who is always cheering for you. 🌹</em></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: TIMELINE -->
+  <section id="timeline-section">
+    <div class="section-header">
+      <p class="section-tagline">The Journey Ahead</p>
+      <h2 class="section-title">Your Beautiful<br/><em>Milestones</em></h2>
+    </div>
+    <div class="timeline" id="timeline">
+      <div class="timeline-item left" data-index="0">
+        <div class="timeline-icon">✨</div>
+        <div class="timeline-card">
+          <h3>Birthday Today</h3>
+          <p>A new chapter begins. The world celebrates you today, Soumiya.</p>
+        </div>
+      </div>
+      <div class="timeline-item right" data-index="1">
+        <div class="timeline-icon">📚</div>
+        <div class="timeline-card">
+          <h3>Group 2 Success</h3>
+          <p>Every page, every practice test, every late night — it all leads here. Victory is yours.</p>
+        </div>
+      </div>
+      <div class="timeline-item left" data-index="2">
+        <div class="timeline-icon">🏅</div>
+        <div class="timeline-card">
+          <h3>Officer Journey</h3>
+          <p>The badge. The uniform. The pride. You were always meant for this.</p>
+        </div>
+      </div>
+      <div class="timeline-item right" data-index="3">
+        <div class="timeline-icon">🌟</div>
+        <div class="timeline-card">
+          <h3>Dream Life</h3>
+          <p>Everything you've worked for — peace, purpose, fulfilment — all of it, yours.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6: FINAL SURPRISE -->
+  <section id="surprise-section">
+    <canvas id="stars-canvas"></canvas>
+    <div class="surprise-content" id="surprise-content">
+      <p class="surprise-pre">One last thing…</p>
+      <button class="surprise-btn" id="surprise-btn">
+        <span>Open Your Surprise</span>
+        <div class="btn-glow"></div>
+      </button>
+    </div>
+    <div class="surprise-reveal" id="surprise-reveal">
+      <h2 class="surprise-msg">May all your dreams come true.</h2>
+      <h1 class="surprise-big">Happy Birthday ❤️</h1>
+      <p class="surprise-name">Soumiya</p>
+    </div>
+    <canvas id="fireworks-canvas"></canvas>
+    <div id="confetti-container"></div>
+  </section>
+
+<script src="Script.js"></script>
+</body>
+</html>
