@@ -27,7 +27,7 @@ function cinematicIntro() {
 
     let particles = [];
     const particleSettings = {
-        count: 300,
+        count: window.innerWidth > 768 ? 300 : 100,
         radius: 1.5,
         minSpeed: 0.1,
         maxSpeed: 0.5,
@@ -244,7 +244,7 @@ function initHero() {
   resize();
   window.addEventListener('resize', resize);
 
-  const particles = Array.from({ length: 120 }, () => createParticle());
+  const particles = Array.from({ length: window.innerWidth > 768 ? 120 : 40 }, () => createParticle());
 
   function createParticle() {
     return {
@@ -468,7 +468,7 @@ function initSurprise() {
   resize();
   window.addEventListener('resize', resize);
 
-  const stars = Array.from({ length: 220 }, () => ({
+  const stars = Array.from({ length: window.innerWidth > 768 ? 220 : 80 }, () => ({
     x: Math.random(),
     y: Math.random(),
     r: Math.random() * 1.8 + 0.3,
@@ -549,7 +549,7 @@ function launchFireworks() {
   };
 
   function explode(fw) {
-    const count = 80 + Math.floor(Math.random() * 40);
+    const count = window.innerWidth > 768 ? 80 + Math.floor(Math.random() * 40) : 30 + Math.floor(Math.random() * 20);
     for (let i = 0; i < count; i++) {
       const angle = (Math.PI * 2 / count) * i;
       const speed = Math.random() * 6 + 2;
@@ -615,7 +615,7 @@ function launchConfetti() {
   const container = document.getElementById('confetti-container');
   const colors = ['#f4a7c3', '#d4af6e', '#9b72cf', '#f0d98a', '#fff8f5', '#e87da8'];
 
-  for (let i = 0; i < 120; i++) {
+  for (let i = 0; i < (window.innerWidth > 768 ? 120 : 50); i++) {
     const el = document.createElement('div');
     el.className = 'confetti-piece';
     const w = Math.random() * 10 + 5;
